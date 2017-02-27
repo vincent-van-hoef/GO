@@ -19,20 +19,20 @@ collectSymbolGoTerm_mouse <- function(term){
   tmpGrepGo <- grepGo(term)
   if(length(tmpGrepGo>0)){
   tmpGenes <- collectGenesGrepGo_mouse(tmpGrepGo)
-  return(unique(as.vector(tmpGenes[,"SYMBOL"])))
   } else {
     stop("This query did not return GO terms!")
   }
+    return(unique(as.vector(tmpGenes[,"SYMBOL"])))
 }
 
 collectEntrezGoTerm_mouse <- function(term){
   tmpGrepGo <- grepGo(term)
   if(length(tmpGrepGo>0)){
     tmpGenes <- collectGenesGrepGo_mouse(tmpGrepGo)
-    return(unique(as.vector(tmpGenes[,"ENTREZID"])))
   } else {
     stop("This query did not return GO terms!")
   }
+    return(unique(as.vector(tmpGenes[,"ENTREZID"])))
 }
 
 # Map entrez to symbol, this can return multiple gene symbols per entrez id but this function only returns the unique names!
