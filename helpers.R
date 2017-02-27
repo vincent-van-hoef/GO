@@ -17,14 +17,22 @@ collectGenesGrepGo_human <- function(grepGo, ...){
 # Combine the grep of GO terms and collection of genes in a single function. Return a vector of unique gene symbols or entrez ids related to the GO term.
 collectSymbolGoTerm_mouse <- function(term){
   tmpGrepGo <- grepGo(term)
+  if(length(tmpGrepGo>0)){
   tmpGenes <- collectGenesGrepGo_mouse(tmpGrepGo)
-  unique(as.vector(tmpGenes[,"SYMBOL"]))
+  return(unique(as.vector(tmpGenes[,"SYMBOL"])))
+  } else {
+    stop("This query did not return GO terms!")
+  }
 }
 
 collectEntrezGoTerm_mouse <- function(term){
   tmpGrepGo <- grepGo(term)
-  tmpGenes <- collectGenesGrepGo_mouse(tmpGrepGo)
-  unique(as.vector(tmpGenes[,"SYMBOL"]))
+  if(length(tmpGrepGo>0)){
+    tmpGenes <- collectGenesGrepGo_mouse(tmpGrepGo)
+    return(unique(as.vector(tmpGenes[,"ENTREZID"])))
+  } else {
+    stop("This query did not return GO terms!")
+  }
 }
 
 # Map entrez to symbol, this can return multiple gene symbols per entrez id but this function only returns the unique names!
