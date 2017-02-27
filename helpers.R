@@ -1,4 +1,4 @@
-# Collect all genes related to certain cellular function in GO.db, this uses a regular expression to find GO terms. GO.db has to be laoded! This is species independent
+# Collect all genes related to certain cellular function in GO.db using a regex. GO.db has to be laoded! This is species independent
 grepGo <- function(term){
   goTerms <- unlist(Term(GOTERM))
   grepTerms <- grep(term, goTerms)
